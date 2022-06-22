@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react'
-import Home from '@/pages/index'
+import HomePage from '@/pages/index'
 
-describe('Home', () => {
-  it('renders a heading', () => {
-    render(<Home />)
+describe('When the component Home is mounted', async() => {
+  test('ddfdfdf', () => {
+    render(<HomePage />)
+   /*  //header openjira
+    expect(screen.getByText(/jira/i)).toBeInTheDocument();
+    //Menu Burger
+    expect(screen.queryByTestId(/menuicon/i)).toBeInTheDocument(); */
 
-    expect(screen.getByText(/index/i)).toBeInTheDocument()
-  })
+    //expect(screen.queryByText(/menu/i)).toBeInTheDocument()
+  },3000)
 })
