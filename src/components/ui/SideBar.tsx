@@ -2,7 +2,7 @@ import { useContext, useId } from "react";
 import { Box, Divider, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import InboxIcon from '@mui/icons-material/Inbox';
 import EmailIcon from '@mui/icons-material/Email';
-import { UIContext } from "context/ui";
+import { UIContext } from "src/context/ui";
 
 const menuItems:string[] = ['Inbox', 'Starred', 'Send Email', 'Draft'];
 
