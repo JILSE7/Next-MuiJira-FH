@@ -1,33 +1,36 @@
-import { FC, useId } from 'react';
+import { FC, useContext, useId, useMemo } from 'react';
 import { Paper, List, Typography } from '@mui/material';
 import { IEntry, TEntryStatus } from 'src/interfaces';
 import { EntryCard } from './';
+import { EntriesContext } from 'src/context/entries';
+import { getEntriesByStatus } from 'src/utils';
 
 
 interface IProps {
-    status: TEntryStatus,
-    task: IEntry[]
+    status: TEntryStatus
 }
 
-export const EntryList:FC<IProps> = ({status, task = []}) => {
+export const EntryList:FC<IProps> = ({status}) => {
+    const {entries} = useContext(EntriesContext)
+
+    const entriesArr = useMemo(() => getEntriesByStatus(status, entries), [status, entries]) 
 
     const reactId = useId()
-    console.log(status, task);
 
   return (
     //drop
-    <div>
-        <Paper sx={{height: 'calc(100vh - 100px)', overflowY: 'scroll', background: 'transparent'}}>
-            <List sx={{opacity: 1}}>
+    
+        <Paper sx={{height: 'calc(100% - 80px)', overflowY:'scroll', '&::-webkit-scrollbar': { display: 'none' },background: 'transparent'}}>
+            <List sx={{opacity: 1,marginBottom: '20px'}} >
                 {
-                    !!task.length ? (
-                                    task.map((entry, i) => (<EntryCard key={reactId + i} entry={entry}/>))
+                    !!entriesArr.length ? (
+                                    entriesArr.map((entry, i) => (<EntryCard key={reactId + i} entry={entry}/>))
                                     ) : (
                                         <Typography sx={{textAlign: 'center'}}>No hay tareas con el estado {status}</Typography>
                                     )
                 }
             </List>
         </Paper>
-    </div>
+
   )
 }

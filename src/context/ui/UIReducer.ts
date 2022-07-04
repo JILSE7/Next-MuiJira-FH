@@ -1,6 +1,6 @@
 import { UIState } from './UIProvider';
 
-type Actions = {type: 'Open'} | {type: 'Close'};
+type Actions = {type: 'Open'} | {type: 'Close'} | {type: 'isAddingEntry' , payload: boolean};
 
 
 export const UIReducer = (state:UIState, action:Actions):UIState => {
@@ -18,6 +18,14 @@ export const UIReducer = (state:UIState, action:Actions):UIState => {
                isMenuOpen: false
         }
 
+        case 'isAddingEntry': 
+
+        return {
+           ...state,   
+           isAddingEntry: action.payload
+        }
+            
+        
         default:
            return state
       }

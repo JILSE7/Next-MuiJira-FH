@@ -3,12 +3,13 @@ import { UIContext, UIReducer } from '.';
 
 
 export interface UIState {
-    isMenuOpen    : boolean;
+    isMenuOpen    : boolean
+    isAddingEntry : boolean
 }
 
-
 const UI_INITIAL_STATE:UIState = {
-    isMenuOpen: false
+    isMenuOpen: false,
+    isAddingEntry:false
 }
 
 
@@ -18,13 +19,16 @@ export const UIProvider:FC<{children:ReactNode}> = ({children}) => {
 
     const openSideMenu = () => dispatch({type:'Open'});
     const closeSideMenu = () => dispatch({type:'Close'});
+
+    const setIsAddingEntry = (isAdding:boolean) => dispatch({type:'isAddingEntry', payload: isAdding})
     
 
     return (
         <UIContext.Provider value={{
            ...state,
            openSideMenu,
-           closeSideMenu
+           closeSideMenu,
+           setIsAddingEntry 
         }}>
             {
                 children
