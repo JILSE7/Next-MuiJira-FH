@@ -4,7 +4,9 @@ import { IEntry } from '../../interfaces/entry';
 
 
 interface ContextProps {
-    entries: IEntry[] 
+    entries: IEntry[]
+    addNewEntry  : (description: string) => void
+    onUpdateEntry: (entry: IEntry) => void
 }
 
 
