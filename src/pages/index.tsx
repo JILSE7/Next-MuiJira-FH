@@ -24,6 +24,7 @@ const HomePage:NextPage = () => {
               <CardHeader title='pendientes' sx={{textAlign: 'center'}}/>
               
                 {/* aggregar una nueva tarea */}
+                
                 {/* listar el lado de las entradas */}
                 <EntryList status='pending' task={getEntries('pending')}/>
             </Card>
