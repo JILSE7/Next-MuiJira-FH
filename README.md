@@ -1,6 +1,10 @@
 # Next.js + Jest
+Para correr localmente, se necesita la base de datos
 
-This example shows how to configure Jest to work with Next.js.
+```
+docker-compose up -d
+```
 
-This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+* El -d, significa _detached_   
+
 
