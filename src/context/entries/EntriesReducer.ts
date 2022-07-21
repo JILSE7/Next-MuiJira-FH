@@ -5,6 +5,7 @@ import { IEntry } from '../../interfaces/entry';
 type EntriesActionType = 
     { type: '[Entries] - AddEntry', payload: IEntry } 
    |{ type: '[Entries] - UpdateEntry', payload: IEntry}
+   |{ type: '[Entries] - RefreshData', payload: IEntry[]}
 
 
 export const EntriesReducer = ( state: EntriesState, action: EntriesActionType ): EntriesState => {
@@ -16,7 +17,6 @@ export const EntriesReducer = ( state: EntriesState, action: EntriesActionType )
             entries: [...state.entries, action.payload]
          }
       case '[Entries] - UpdateEntry':
-
       return {
          entries : state.entries.map(entry => {
             if(entry._id === action.payload._id){
@@ -26,7 +26,11 @@ export const EntriesReducer = ( state: EntriesState, action: EntriesActionType )
             return entry
          })
       }
-      
+      case '[Entries] - RefreshData':
+         return {
+            ...state,
+            entries: action.payload
+         }
        default:
           return state;
    }

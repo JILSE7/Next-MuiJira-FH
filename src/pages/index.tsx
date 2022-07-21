@@ -23,7 +23,7 @@ const HomePage:NextPage = () => {
           <Grid item xs={12} sm={4}>
             <Card sx={{height: 'calc(100vh - 120px)',padding: 1}}>
               <CardHeader title='En Progreso' sx={{textAlign: 'center',}}/>
-              <EntryList status='in-progres' />
+              <EntryList status='in-progress' />
             </Card>
           </Grid>
           <Grid item xs={12} sm={4}>

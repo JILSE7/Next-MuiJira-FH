@@ -7,4 +7,4 @@ export interface IEntry {
     status     : TEntryStatus  //pending - in-progress - finished
 }
 
-export type TEntryStatus = 'pending' | 'in-progres' | 'finished'
+export type TEntryStatus = 'pending' | 'in-progress' | 'finished'
