@@ -21,13 +21,26 @@ export const EntriesProvider:FC<{children: ReactNode}> = ({ children }) => {
 
     const [state, dispatch] = useReducer( EntriesReducer , ENTRIES_INITIAL_STATE );
 
-    const addNewEntry = (description:string) =>{
-        console.log("add");
-        dispatch({type: '[Entries] - AddEntry', payload: {_id:uuidv4(), createAt: Date.now(), description, status: 'pending' }})
+    const addNewEntry = async(description:string) =>{
+        const response = await entriesApi.post<ResponseEntries>('entries', {
+          description
+        });
+
+        if(response.data.data){
+            dispatch({type: '[Entries] - AddEntry', payload: response['data']['data'][0]})
+        }
     }
 
-    const onUpdateEntry = (entry:IEntry) => {
-        dispatch({type: '[Entries] - UpdateEntry', payload:entry})
+    const onUpdateEntry = async({ _id, description, status }:IEntry) => {
+      try {
+        const response = await entriesApi.put<ResponseEntries>(`entries/${_id}`, { description, status });
+        if(response.data.data){
+            dispatch({type: '[Entries] - UpdateEntry', payload: response['data']['data'][0]})
+        }
+        
+      } catch (error) {
+        console.log(error);
+      }  
     }
 
     const refreshEntries = async() => {

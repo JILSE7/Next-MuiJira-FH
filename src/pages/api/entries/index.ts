@@ -1,6 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { mongoDB, seedData, TSeedEntry } from 'src/database'
-import { EntryModel, IEntryModel } from 'src/models'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { mongoDB, seedData, TSeedEntry } from 'src/database';
+import { EntryModel, IEntryModel } from 'src/models';
 
 export type ResponseEntries = {
     ok  : boolean,
@@ -12,9 +12,11 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
     
     switch ( req.method ) {
         case 'GET':
-            return getEntries(res)
+            return getEntries(res);
         case 'POST':
-            return postEntry(req, res)
+            return postEntry(req, res);
+        case 'PUT':
+            return postEntry(req, res);
         default:
             return res.status(200).json({ ok: false, message: "No existe este endpoint"});
     }
@@ -43,9 +45,11 @@ const postEntry = async(req: NextApiRequest, res: NextApiResponse<ResponseEntrie
         await mongoDB.connect();
         await newEntry.save();
         return res.status(201).json({ ok: true, message: "Se ha agregado exitosamente la nueva entrada", data:[newEntry]});
-    } catch (error) {
-        console.log(error);
-        return res.status(500).json({ ok: false, message: "Ha ocurrido un error al agregar la entrada"});  
+    } catch (error : any) {
+        if (error instanceof Error){
+          return res.status(500).json({ ok: false, message: error.message});
+        }
+          
     } finally {
         await mongoDB.disconnect();
     }

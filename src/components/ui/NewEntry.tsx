@@ -25,13 +25,11 @@ export const NewEntry = () => {
 
         addNewEntry(inputValue)
         startTransition(() => {
-            setinputValue('')
-            setisTouched(false)
+            setinputValue('');
+            setisTouched(false);
         })
-        setIsAddingEntry(false)
-
-
-    }
+        setIsAddingEntry(false);
+    };
 
   return (
 
