@@ -12,8 +12,6 @@ interface ISeedEntry {
 
 export const seedData:ISeedEntry = {
   entries: [
-    { createAt:1545544, description: 'anything', status: 'pending' },
-    { createAt:1545545, description: 'anything fdfdfd', status: 'in-progress' },
-    { createAt:1545546, description: 'anything ghrere545', status: 'finished' } 
+    { createAt:1545544, description: 'entrada prueba', status: 'pending' },
   ]
 }
