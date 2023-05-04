@@ -43,7 +43,7 @@ export const EntryList:FC<IProps> = ({status}) => {
         <Paper sx={{height: 'calc(100vh - 80px)', overflowY:'scroll', '&::-webkit-scrollbar': { display: 'none' },background: 'transparent'}}>
             <List sx={{opacity: isDragging ? 0.2 : 1,marginBottom: '20px', transition: 'all .3s'}} >
                 {
-                    !!entriesArr.length ? (
+                    !!entriesArr?.length ? (
                                     entriesArr.map((entry, i) => (<EntryCard key={reactId + i} entry={entry}/>))
                                     ) : (
                                         <Typography sx={{textAlign: 'center'}}>No hay tareas con el estado {status}</Typography>

@@ -31,6 +31,7 @@ const getEntries = async(res: NextApiResponse<ResponseEntries>) => {
     return res.status(200).json({ ok: true, message: "Excelente", data: entries});
       
   } catch (error) {
+    console.log({error});
     return res.status(200).json({ ok: false, message: "Ha ocurrido un error al trael las entradas"});  
   }
 };
