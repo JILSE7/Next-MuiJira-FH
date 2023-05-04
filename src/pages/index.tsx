@@ -5,8 +5,6 @@ import { EntryList } from 'src/components/ui'
 import { NewEntry } from '../components/ui/NewEntry';
 
 const HomePage:NextPage = () => {
-  console.log(process.env.NEXT_PUBLIC_VARIABLE_FRONT);
-  console.log(process.env.DATABASEURL);
   return (
       <Layout title='Home - Open Jira'>
         <Grid container spacing={4} mt={1} sx={{paddingLeft: '10px', paddingRight: '10px'}}>
