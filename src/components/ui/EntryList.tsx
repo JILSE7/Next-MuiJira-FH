@@ -40,7 +40,7 @@ export const EntryList:FC<IProps> = ({status}) => {
   return (
     //drop
     <div onDrop={onDrop} onDragOver={allowDrop} className={isDragging ?  styles.dragging : ''}>
-        <Paper sx={{height: 'calc(100vh - 80px)', overflowY:'scroll', '&::-webkit-scrollbar': { display: 'none' },background: 'transparent'}}>
+        <Paper sx={{overflowY:'scroll', '&::-webkit-scrollbar': { display: 'none' },background: 'transparent'}}>
             <List sx={{opacity: isDragging ? 0.2 : 1,marginBottom: '20px', transition: 'all .3s'}} >
                 {
                     !!entriesArr?.length ? (
